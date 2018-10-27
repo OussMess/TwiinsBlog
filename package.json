@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@atlaskit/global-navigation": "^5.0.5",
+    "@atlaskit/icon": "^14.2.0",
+    "@atlaskit/logo": "^9.2.3",
+    "@atlaskit/navigation-next": "^3.19.1",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
-    "react-scripts": "2.0.5"
+    "react-scripts": "2.0.5",
+    "styled-components": "^4.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,10 +30,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@storybook/react": "^3.4.11",
     "@storybook/addon-actions": "^3.4.11",
     "@storybook/addon-links": "^3.4.11",
     "@storybook/addons": "^3.4.11",
+    "@storybook/react": "^3.4.11",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0"
   }
