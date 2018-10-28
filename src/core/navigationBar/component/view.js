@@ -19,7 +19,7 @@ const MyGlobalNavigation = () => (
         productIcon={() => <QuoteIcon size="medium"/>}
         onProductClick={() => {
         }}
-        productTooltip="Twins Blog"
+        productTooltip="Twins Blog "
     />
 );
 
