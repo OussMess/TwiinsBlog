@@ -19,11 +19,16 @@ const MyGlobalNavigation = () => (
         productIcon={() => <QuoteIcon size="medium"/>}
         onProductClick={() => {
         }}
-        productTooltip="Twins Blog "
+        productTooltip="Twins Blog"
     />
 );
 
-const MyProductNavigation = () => (
+const MyProductNavigation = (path) => () => {
+    const home = "/";
+    const places = "/places";
+    const activities = "/activities";
+    const recommendations = "/recommendations";
+    return (
     <Fragment>
         <HeaderSection>
             {({className}) => (
@@ -35,28 +40,35 @@ const MyProductNavigation = () => (
         <MenuSection>
             {({className}) => (
                 <div className={className}>
-                    <Item text="Home" before={HomeFilledIcon} isSelected/>
-                    <Item text="Places" before={MarketplaceIcon}/>
-                    <Item text="Activities" before={EmojiActivityIcon}/>
+                    <Item text={"Home"} before={HomeFilledIcon} href={`#${home}`} isSelected={path === home}/>
+                    <Item text="Places" before={MarketplaceIcon} href={`#${places}`} isSelected={path === places}/>
+                    <Item text="Activities" before={EmojiActivityIcon} href={`#${activities}`}
+                          isSelected={path === activities}/>
                     <Separator/>
-                    <Item text="Recommendations" before={BillingIcon}/>
+                    <Item text="Recommendations" before={BillingIcon} href={`#${recommendations}`}
+                          isSelected={path === recommendations}/>
                 </div>
             )}
         </MenuSection>
     </Fragment>
-);
+    )
+};
 
-const NavigationBar = () => (
-    <NavigationProvider>
-        <LayoutManager
-            globalNavigation={MyGlobalNavigation}
-            productNavigation={MyProductNavigation}
-            containerNavigation={null}>
+const NavigationBar = ({children, location: {pathname}}) => {
+    return (
+        <NavigationProvider>
+            <LayoutManager
+                globalNavigation={MyGlobalNavigation}
+                productNavigation={MyProductNavigation(pathname)}
+                containerNavigation={null}>
 
-            <div style={{padding: '32px 40px'}}>Page content goes here.</div>
-        </LayoutManager>
-    </NavigationProvider>
-);
+                <div style={{padding: '32px 40px'}}>
+                    {children}
+                </div>
+            </LayoutManager>
+        </NavigationProvider>
+    );
+};
 const styles = {
     titleProductNav: {
         fontFamily: ["Charlie Display_Semibold", "Segoe UI", "Noto Sans", "Droid Sans", "Helvetica Neue"],
